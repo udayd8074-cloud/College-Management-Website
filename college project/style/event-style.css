@@ -1,0 +1,382 @@
+/* Event Page Styles */
+
+/* Hero Section for Events Page */
+.events-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.events-hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.events-hero p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+}
+
+/* Events Section */
+.events-section {
+    padding: 40px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h3 {
+    color: #1e3c72;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    border-radius: 2px;
+}
+
+.section-header p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+/* Events Grid */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Event Card Styles */
+.event-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Upcoming Event Card */
+.event-card.upcoming {
+    border-left: 4px solid #28a745;
+}
+
+.event-card.upcoming:hover {
+    border-left-color: #28a745;
+}
+
+/* Past Event Card */
+.event-card.past {
+    border-left: 4px solid #6c757d;
+    opacity: 0.85;
+}
+
+.event-card.past:hover {
+    opacity: 1;
+}
+
+/* Event Image */
+.event-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-image img {
+    transform: scale(1.05);
+}
+
+/* Date Badge */
+.event-date-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.event-date-badge.past {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+}
+
+.event-date-badge .month {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.event-date-badge .day {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Event Details */
+.event-details {
+    padding: 20px;
+}
+
+/* Event Category Tag */
+.event-category {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.event-category.academic {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.event-category.workshop {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.event-category.placement {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.event-category.sports {
+    background: #fce4ec;
+    color: #c2185b;
+}
+
+.event-category.cultural {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+/* Event Title */
+.event-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e3c72;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+/* Event Location & Time */
+.event-location,
+.event-time {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Event Description */
+.event-description {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+/* Register Button */
+.event-register-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.event-register-btn:hover {
+    background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 60, 114, 0.4);
+}
+
+/* Past Events Section */
+.past-events-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 2px dashed #e0e0e0;
+}
+
+.past-events-section .section-header h3 {
+    color: #6c757d;
+}
+
+.past-events-section .section-header h3::after {
+    background: linear-gradient(90deg, #6c757d, #495057);
+}
+
+/* Section Divider */
+.section-divider {
+    text-align: center;
+    margin: 50px 0;
+    position: relative;
+}
+
+.section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e0e0e0;
+}
+
+.section-divider span {
+    background: white;
+    padding: 0 20px;
+    position: relative;
+    color: #666;
+    font-size: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .events-hero h2 {
+        font-size: 2rem;
+    }
+    
+    .events-hero p {
+        font-size: 1rem;
+    }
+    
+    .section-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-image {
+        height: 180px;
+    }
+    
+    .event-details {
+        padding: 15px;
+    }
+    
+    .event-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .events-hero {
+        padding: 40px 15px;
+    }
+    
+    .events-hero h2 {
+        font-size: 1.6rem;
+    }
+    
+    .event-date-badge {
+        padding: 8px 12px;
+    }
+    
+    .event-date-badge .day {
+        font-size: 1.2rem;
+    }
+    
+    .event-category {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+    
+    .event-register-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Animation for Event Cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.event-card {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.event-card:nth-child(1) { animation-delay: 0.1s; }
+.event-card:nth-child(2) { animation-delay: 0.2s; }
+.event-card:nth-child(3) { animation-delay: 0.3s; }
+.event-card:nth-child(4) { animation-delay: 0.4s; }
+.event-card:nth-child(5) { animation-delay: 0.5s; }
+.event-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Empty State */
+.no-events {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+}
+
+.no-events span {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.no-events p {
+    font-size: 1.1rem;
+}
+

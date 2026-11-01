@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Result - Future Tech College</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/result.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="college-logo">
+                <img src="../college logo/WhatsApp Image 2026-04-10 at 12.34.54 PM.jpeg" alt="College Logo">
+            </div>
+            <div class="college-info">
+<h1>Future Tech College</h1>
+<p class="tagline">“शिक्षा से सफलता की ओर”</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="event.html">Events</a></li>
+                <li><a href="department&otherfacilities.html">Department & Other Facilities</a></li>
+                <li><a href="result.html" class="active">Result</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero result-hero">
+        <div class="container">
+            <h2>🎓 Result Portal</h2>
+            <p>Check your semester examination results</p>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <div class="container">
+            <section class="result-section">
+                <div class="section-header">
+                    <h3>Check Your Results</h3>
+                    <p>Enter your details to view semester marksheet</p>
+                </div>
+
+                <div class="result-form-container">
+                    <form class="result-form" onsubmit="checkResult(event)">
+                        <div class="form-group">
+                            <label for="rollno">Roll Number</label>
+                            <input type="text" id="rollno" placeholder="Enter Roll Number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="semester">Semester</label>
+                            <select id="semester" required>
+                                <option value="">Select Semester</option>
+                                <option value="1">Sem 1</option>
+                                <option value="2">Sem 2</option>
+                                <option value="3">Sem 3</option>
+                                <option value="4">Sem 4</option>
+                                <option value="5">Sem 5</option>
+                                <option value="6">Sem 6</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-primary">View Results</button>
+                    </form>
+
+                    <div id="result" class="result-display"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+<p>&copy; 2026 Future Tech College. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+function checkResult(event) {
+    event.preventDefault();
+    const roll = document.getElementById("rollno").value;
+    const sem = document.getElementById("semester").value;
+
+    if (!roll || !sem) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    // Show loading
+    document.getElementById("result").innerHTML = '<div class="loading">Loading results...</div>';
+
+    fetch(`http://localhost:5000/result?rollno=${roll}&semester=Sem ${sem}`)
+    .then(res => res.json())
+    .then(data => {
+        const resultDiv = document.getElementById("result");
+
+        if (data.error) {
+            resultDiv.innerHTML = `<div class="error-message">Result not found: ${data.error}</div>`;
+            return;
+        }
+
+        let subjectsHTML = "";
+        data.subjects.forEach(sub => {
+            subjectsHTML += `
+                <tr>
+                    <td>${sub.name}</td>
+                    <td>${sub.marks}</td>
+                </tr>
+            `;
+        });
+
+        resultDiv.innerHTML = `
+            <div class="result-card">
+                <div class="student-info">
+                    <h3>${data.name}</h3>
+                    <p><strong>Roll No:</strong> ${roll} | <strong>Semester:</strong> ${sem}</p>
+                </div>
+                
+                <div class="marks-table-container">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${subjectsHTML}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="result-summary">
+                    <h4>Percentage: ${data.percentage}%</h4>
+                    <div class="grade-display">Grade: <span class="grade">${data.grade}</span></div>
+                </div>
+            </div>
+        `;
+    }).catch(error => {
+        document.getElementById("result").innerHTML = '<div class="error-message">Error fetching results. Please try again.</div>';
+    });
+}
+    </script>
+</body>
